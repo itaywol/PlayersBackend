@@ -27,6 +27,7 @@ Each player can update his own state to ready once in the players lobby, and all
 Method 1 (Dockerz):
 ```
 cp .env.example .env
+you can adjust .env file as you wish :D 
 docker-compose up -d
 ```
 
