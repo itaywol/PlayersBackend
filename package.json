@@ -4,10 +4,11 @@
   "description": "Players Lobby and Ready State pubsub",
   "main": "src/server.ts",
   "scripts": {
-      "start":"node --inspect=0.0.0.0:$DEBUG_PORT -r ts-node/register ./src/server.ts",
-      "start:dev":"nodemon",
-      "build":"tsc",
-      "start:prod":"npm run build && node dist/server.js"
+    "start": "node --inspect=0.0.0.0:$DEBUG_PORT -r ts-node/register ./src/server.ts",
+    "start:dev": "nodemon",
+    "build": "tsc",
+    "start:prod": "npm run build && node dist/server.js",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -28,12 +29,20 @@
   },
   "homepage": "https://github.com/itaywol/playersLobbyPractice#readme",
   "devDependencies": {
+    "@babel/core": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "@babel/preset-typescript": "^7.9.0",
+    "@types/jest": "^25.2.2",
     "@types/node": "^14.0.1",
     "@types/webpack-env": "^1.15.2",
+    "apollo-server-testing": "^2.13.1",
+    "babel-jest": "^26.0.1",
     "clean-webpack-plugin": "^3.0.0",
     "eslint": "^7.0.0",
     "eslint-plugin-import": "^2.20.2",
+    "jest": "^26.0.1",
     "nodemon": "^2.0.3",
+    "ts-jest": "^25.5.1",
     "ts-loader": "^7.0.4",
     "ts-node": "^8.10.1",
     "typescript": "^3.9.2",
@@ -51,9 +60,20 @@
     "uuid": "^8.0.0"
   },
   "nodemonConfig": {
-      "ignore": ["**/*.test.ts","**/*.spec.ts",".git","node_modules","dist"],
-      "watch": ["src"],
-      "exec": "npm start",
-      "ext":"ts"
+    "ignore": [
+      "**/*.test.ts",
+      "**/*.spec.ts",
+      ".git",
+      "node_modules",
+      "dist"
+    ],
+    "watch": [
+      "src"
+    ],
+    "exec": "npm start",
+    "ext": "ts"
+  },
+  "jest": {
+      "preset":"ts-jest"
   }
 }
