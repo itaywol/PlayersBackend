@@ -1,0 +1,13 @@
+version: "3.7"
+
+services:
+  backend:
+    container_name: "${PROJECT_NAME}_backend"
+    build:
+      context: .
+      target: $NODE_ENV
+    ports: 
+      - "${BACKEND_PORT}:${BACKEND_PORT}"
+    environment: 
+      NODE_ENV: $NODE_ENV
+      PORT: $BACKEND_PORT
