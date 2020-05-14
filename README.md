@@ -23,4 +23,17 @@ Each player can update his own state to ready once in the players lobby, and all
 
 1. Write tests
 
+## How to run:
 
+Method 1 (Dockerz):
+```
+cp .env.example .env
+docker-compose up -d
+```
+
+Method 2 (Node and Development mode):
+
+```
+source .env.example
+npm run start:dev
+```
