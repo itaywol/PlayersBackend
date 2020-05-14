@@ -11,3 +11,5 @@ services:
     environment: 
       NODE_ENV: $NODE_ENV
       PORT: $BACKEND_PORT
+    volumes:
+      - "./:/usr/src/app"

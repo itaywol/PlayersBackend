@@ -1,24 +1,28 @@
 import { ApolloServer, gql } from "apollo-server";
+import { PlayersDatabase } from "./players/players.database";
+import { typeDefenitions } from "./players/players.schema";
+import { resolvers } from "./players/players.resolver";
+import { PubSub } from "apollo-server";
 
-const typeDefs = gql`
-    type Query {
-        testMessage: String!
-    }
-`;
+export const pubsub = new PubSub();
 
-const resolvers = {
-    Query: {
-        testMessage: (): void => console.log("this is a test message"),
+const PDB = new PlayersDatabase(pubsub);
+
+const server: ApolloServer = new ApolloServer({
+    typeDefs: typeDefenitions,
+    resolvers: resolvers,
+    context: ({ req, connection }) => {
+        if (connection) {
+            return { ...connection.context, dataSources: { PDB } };
+        } else {
+            const token = req.headers.authorization || "";
+
+            return { token, dataSources: { PDB } };
+        }
     },
-};
-
-const server: ApolloServer = new ApolloServer({ typeDefs, resolvers });
+});
 
 server
     .listen({ port: process.env.PORT })
-    .then((url) => console.log(`Apollo server running at ${url}`));
+    .then(() => console.log(`Apollo server running at ${process.env.PORT}`));
 
-if (module.hot) {
-    module.hot.accept();
-    module.hot.dispose(() => console.log("Module disposed."));
-}
