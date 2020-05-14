@@ -4,7 +4,7 @@
   "description": "Players Lobby and Ready State pubsub",
   "main": "src/server.ts",
   "scripts": {
-      "start":"node --inspect=5858 -r ts-node/register ./src/server.ts",
+      "start":"node --inspect=0.0.0.0:$DEBUG_PORT -r ts-node/register ./src/server.ts",
       "start:dev":"nodemon",
       "build":"tsc",
       "start:prod":"npm run build && node dist/server.js"

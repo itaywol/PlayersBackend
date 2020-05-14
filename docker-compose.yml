@@ -8,8 +8,10 @@ services:
       target: $NODE_ENV
     ports: 
       - "${BACKEND_PORT}:${BACKEND_PORT}"
+      - "${BACKEND_DEBUG_PORT}:${BACKEND_DEBUG_PORT}"
     environment: 
       NODE_ENV: $NODE_ENV
       PORT: $BACKEND_PORT
+      DEBUG_PORT: $BACKEND_DEBUG_PORT
     volumes:
       - "./:/usr/src/app"
