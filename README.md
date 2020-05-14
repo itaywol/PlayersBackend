@@ -37,3 +37,10 @@ Method 2 (Node and Development mode):
 source .env.example
 npm run start:dev
 ```
+
+## How to run tests:
+
+Simply:
+```
+npm run test
+```
