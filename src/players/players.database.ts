@@ -54,6 +54,9 @@ export class PlayersDatabase {
     }
 
     registerPlayer(data: ICreatePlayer): IPlayer {
+        if (this.findOneByNickname(data.nickName).index !== null)
+            throw new Error("User with that nickname already exists");
+
         // Create new player object
         const player: IPlayer = this.createNewPlayer(data);
 
