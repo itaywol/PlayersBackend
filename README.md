@@ -7,7 +7,6 @@ Each player can update his own state to ready once in the players lobby, and all
 # Using the following libraries/frameworks/markup:
 
 - Typescript
-- RxJS
 - Apollo-Server & Express
 - PubSub (Apollo Subscriptions)
 
